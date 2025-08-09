@@ -1,90 +1,121 @@
+// src/components/Skills.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import { profile } from "../data/profile";
 import {
-  SiTerraform, SiHelm, SiArgo, SiGithubactions, SiGitlab,
-  SiKubernetes, SiDocker, SiPython, SiPrometheus, SiGrafana,
-  SiPostgresql, SiMysql, SiRabbitmq, SiGnubash   // <-- add SiGnubash here
+  SiTerraform,
+  SiAmazoncloudwatch,
+  SiAmazonaws,
+  SiAwsamplify,
+  SiHelm,
+  SiGithubactions,
+  SiGitlab,
+  SiOctopusdeploy,
+  SiLinux,
+  SiWindows,
+  SiGrafana,
+  SiPrometheus,
+  SiKubernetes,
 } from "react-icons/si";
-import { FaAws } from "react-icons/fa";
-import { MdSecurity } from "react-icons/md";
+import { FaCloud, FaNetworkWired } from "react-icons/fa";
+import { MdOutlineSecurity } from "react-icons/md";
+import { DiAws } from "react-icons/di";
+import { AiOutlineCode } from "react-icons/ai";
 
-// REMOVE this line (it caused the build error):
-// import { TbBrandBash } from "react-icons/tb";
-
-// Icon resolver
-function iconFor(skill) {
-  const s = skill.toLowerCase();
-  if (s.includes("aws")) return <FaAws className="text-orange-500" />;
-  if (s.includes("terraform")) return <SiTerraform className="text-purple-600" />;
-  if (s.includes("helm")) return <SiHelm className="text-blue-600" />;
-  if (s.includes("argo")) return <SiArgo className="text-orange-500" />;
-  if (s.includes("github actions")) return <SiGithubactions className="text-slate-700" />;
-  if (s.includes("gitlab")) return <SiGitlab className="text-orange-600" />;
-  if (s.includes("kubernetes") || s.includes("eks")) return <SiKubernetes className="text-blue-600" />;
-  if (s.includes("docker")) return <SiDocker className="text-sky-500" />;
-  if (s.includes("python")) return <SiPython className="text-yellow-500" />;
-  if (s.includes("bash")) return <SiGnubash className="text-green-700" />;   // <-- use SiGnubash
-  if (s.includes("prometheus")) return <SiPrometheus className="text-orange-600" />;
-  if (s.includes("grafana")) return <SiGrafana className="text-orange-500" />;
-  if (s.includes("postgres")) return <SiPostgresql className="text-sky-700" />;
-  if (s.includes("mysql")) return <SiMysql className="text-blue-700" />;
-  if (s.includes("rabbitmq")) return <SiRabbitmq className="text-orange-500" />;
-  if (s.includes("iam") || s.includes("security")) return <MdSecurity className="text-red-500" />;
-  return <span>💡</span>;
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, ease: "easeOut", delay: i * 0.08 }
-  })
-};
-
-const listVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.05 } } };
-const itemVariants = { hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } } };
+const skillCategories = [
+  {
+    title: "Infrastructure as Code (IaC)",
+    skills: [
+      { name: "Terraform", icon: <SiTerraform /> },
+      { name: "AWS CloudFormation", icon: <SiAmazonaws /> },
+      { name: "AWS CDK", icon: <SiAwsamplify /> },
+    ],
+  },
+  {
+    title: "CI/CD",
+    skills: [
+      { name: "GitHub Actions", icon: <SiGithubactions /> },
+      { name: "Helm", icon: <SiHelm /> },
+      { name: "Kargo", icon: <AiOutlineCode /> },
+      { name: "GitLab CI", icon: <SiGitlab /> },
+      { name: "Octopus Deploy", icon: <SiOctopusdeploy /> },
+      { name: "AWS CodePipeline", icon: <DiAws /> },
+    ],
+  },
+  {
+    title: "Operating Systems",
+    skills: [
+      { name: "Linux", icon: <SiLinux /> },
+      { name: "Windows Server", icon: <SiWindows /> },
+    ],
+  },
+  {
+    title: "Observability",
+    skills: [
+      { name: "CloudWatch", icon: <SiAmazoncloudwatch /> },
+      { name: "AppDynamics", icon: <FaCloud /> },
+      { name: "Prometheus", icon: <SiPrometheus /> },
+      { name: "Grafana", icon: <SiGrafana /> },
+    ],
+  },
+  {
+    title: "Cloud Networking",
+    skills: [
+      { name: "AWS VPC", icon: <FaNetworkWired /> },
+      { name: "AWS Transit Gateway", icon: <FaNetworkWired /> },
+    ],
+  },
+  {
+    title: "Security",
+    skills: [
+      { name: "AWS Security Hub", icon: <MdOutlineSecurity /> },
+      { name: "AWS CloudTrail", icon: <SiAmazonaws /> },
+      { name: "AWS Inspector", icon: <MdOutlineSecurity /> },
+      { name: "Splunk", icon: <FaCloud /> },
+    ],
+  },
+];
 
 export default function Skills() {
-  const groups = (profile.skills && typeof profile.skills === "object") ? profile.skills : {};
-
   return (
-    <section id="skills" className="py-16 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800">Skills</h2>
-          <p className="text-slate-600 mt-2 max-w-3xl">
-            Tools and technologies I use to build reliable, secure, and efficient platforms.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {Object.entries(groups).map(([category, skills], idx) => (
+    <section id="skills" className="py-20 bg-white text-slate-900">
+      <div className="max-w-6xl mx-auto px-4">
+        <motion.h2
+          className="text-4xl font-bold mb-12 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          Skills
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {skillCategories.map((category, idx) => (
             <motion.div
-              key={category}
-              className="bg-white shadow rounded-xl p-6 border border-slate-200"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.25 }}
-              custom={idx}
+              key={idx}
+              className="p-6 rounded-xl shadow-lg bg-gray-50 hover:shadow-xl transition"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.15, duration: 0.6 }}
             >
-              <h3 className="text-lg font-semibold text-slate-800 mb-4">{category}</h3>
-              <motion.ul
-                variants={listVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                className="space-y-3"
-              >
-                {(skills || []).map((skill) => (
-                  <motion.li key={skill} variants={itemVariants} className="flex items-center gap-3 text-slate-700">
-                    <span className="text-xl shrink-0">{iconFor(skill)}</span>
-                    <span>{skill}</span>
+              <h3 className="text-2xl font-semibold mb-4 border-b pb-2 border-gray-200">
+                {category.title}
+              </h3>
+              <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                {category.skills.map((skill, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex flex-col items-center text-center text-sm font-medium text-slate-700"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05, duration: 0.4 }}
+                  >
+                    <span className="text-3xl mb-2 text-blue-600">{skill.icon}</span>
+                    {skill.name}
                   </motion.li>
                 ))}
-              </motion.ul>
+              </ul>
             </motion.div>
           ))}
         </div>

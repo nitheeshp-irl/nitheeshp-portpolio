@@ -17,21 +17,43 @@ export const profile = {
   experience: [
     {
       company: "Verizon Connect",
-      role: "Senior Software Engineer (AWS/DevOps)",
-      period: "2021 — Present · Dublin, Ireland",
-      bullets: [
-        "Led GitOps rollout with Argo CD & Kargo; automated promotions across environments.",
-        "Built CI checks for CloudFormation security and best practices.",
-        "Hardened EKS with least-privilege IRSA and network policies.",
-        "Optimized Bedrock model usage with spend guards and observability hooks."
+      role: "Senior Software Engineer — DevOps",
+      period: "2019 – Present · Dublin, Ireland",
+      achievements: [
+        "Designed and operated multi-account AWS environments using Terraform, CloudFormation, and CDK.",
+        "Built CI/CD pipelines (GitHub Actions, GitLab CI, CodePipeline) for containerized workloads.",
+        "Improved reliability and cost posture with CloudWatch metrics/alarms, Prometheus & Grafana.",
+        "Implemented guardrails and audits with Security Hub, Inspector, and CloudTrail."
       ]
     },
     {
-      company: "Previous Roles",
-      role: "Cloud/DevOps Engineer",
-      period: "2012 — 2021 · Various",
-      bullets: [
-        "Sysadmin → DevOps journey across on-prem & AWS; automated everything in sight."
+      company: "Ascendum",
+      role: "DevOps Engineer",
+      period: "2016 – 2019",
+      achievements: [
+        "Automated environment provisioning with Terraform and repeatable Helm/Kubernetes workflows.",
+        "Introduced release promotion using Kargo and Octopus Deploy for multi-env delivery.",
+        "Hardened network topologies (VPC baseline, Transit Gateway patterns)."
+      ]
+    },
+    {
+      company: "SixNines",
+      role: "Cloud Engineer",
+      period: "2015 – 2016",
+      achievements: [
+        "Delivered AWS landing zones and CI/CD foundations for customer projects.",
+        "Integrated observability with CloudWatch and dashboards; implemented cost and security baselines.",
+        "Scripted operational runbooks on Linux/Windows Server."
+      ]
+    },
+    {
+      company: "IGATE",
+      role: "Software Engineer",
+      period: "2012 – 2015",
+      achievements: [
+        "Supported application deployments and IaC adoption using CloudFormation and early Terraform.",
+        "Automated routine operations with Python/Bash; reduced manual toil.",
+        "Collaborated with teams to standardize CI steps and artifact promotion."
       ]
     }
   ],
