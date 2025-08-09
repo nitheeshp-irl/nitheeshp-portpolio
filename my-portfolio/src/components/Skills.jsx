@@ -1,103 +1,104 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { profile } from "../data/profile";
-
-// AWS icon fallback from FontAwesome
-import { FaAws } from "react-icons/fa";
-
 import {
-  SiTerraform,
-  SiHelm,
-  SiArgo,
-  SiGithubactions,
-  SiGitlab,
-  SiKubernetes,
-  SiDocker,
-  SiPython,
-  SiPrometheus,
-  SiGrafana,
-  SiPostgresql,
-  SiMysql,
-  SiRabbitmq
+  SiTerraform, SiHelm, SiArgo, SiGithubactions, SiGitlab,
+  SiKubernetes, SiDocker, SiPython, SiPrometheus, SiGrafana,
+  SiPostgresql, SiMysql, SiRabbitmq
 } from "react-icons/si";
+import { FaAws } from "react-icons/fa";
+import { MdSecurity } from "react-icons/md";
+import { TbBrandBash } from "react-icons/tb";
 
-const skillCategories = [
-  {
-    category: "Cloud",
-    skills: [
-      { name: "AWS", icon: <FaAws className="text-orange-500" /> }
-    ]
-  },
-  {
-    category: "Infrastructure as Code",
-    skills: [
-      { name: "Terraform", icon: <SiTerraform className="text-purple-500" /> },
-      { name: "Helm", icon: <SiHelm className="text-blue-500" /> }
-    ]
-  },
-  {
-    category: "CI/CD",
-    skills: [
-      { name: "ArgoCD", icon: <SiArgo className="text-red-500" /> },
-      { name: "GitHub Actions", icon: <SiGithubactions className="text-gray-700" /> },
-      { name: "GitLab CI", icon: <SiGitlab className="text-orange-600" /> }
-    ]
-  },
-  {
-    category: "Containers & Orchestration",
-    skills: [
-      { name: "Kubernetes", icon: <SiKubernetes className="text-blue-400" /> },
-      { name: "Docker", icon: <SiDocker className="text-blue-500" /> }
-    ]
-  },
-  {
-    category: "Programming & Scripting",
-    skills: [
-      { name: "Python", icon: <SiPython className="text-yellow-500" /> }
-    ]
-  },
-  {
-    category: "Monitoring & Observability",
-    skills: [
-      { name: "Prometheus", icon: <SiPrometheus className="text-pink-500" /> },
-      { name: "Grafana", icon: <SiGrafana className="text-orange-500" /> }
-    ]
-  },
-  {
-    category: "Databases",
-    skills: [
-      { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-600" /> },
-      { name: "MySQL", icon: <SiMysql className="text-blue-400" /> }
-    ]
-  },
-  {
-    category: "Messaging",
-    skills: [
-      { name: "RabbitMQ", icon: <SiRabbitmq className="text-orange-600" /> }
-    ]
+// Icon resolver (keeps your light theme colors)
+function iconFor(skill) {
+  const s = skill.toLowerCase();
+  if (s.includes("aws")) return <FaAws className="text-orange-500" />;
+  if (s.includes("terraform")) return <SiTerraform className="text-purple-600" />;
+  if (s.includes("helm")) return <SiHelm className="text-blue-600" />;
+  if (s.includes("argo")) return <SiArgo className="text-orange-500" />;
+  if (s.includes("github actions")) return <SiGithubactions className="text-slate-700" />;
+  if (s.includes("gitlab")) return <SiGitlab className="text-orange-600" />;
+  if (s.includes("kubernetes") || s.includes("eks")) return <SiKubernetes className="text-blue-600" />;
+  if (s.includes("docker")) return <SiDocker className="text-sky-500" />;
+  if (s.includes("python")) return <SiPython className="text-yellow-500" />;
+  if (s.includes("bash")) return <TbBrandBash className="text-green-700" />;
+  if (s.includes("prometheus")) return <SiPrometheus className="text-orange-600" />;
+  if (s.includes("grafana")) return <SiGrafana className="text-orange-500" />;
+  if (s.includes("postgres")) return <SiPostgresql className="text-sky-700" />;
+  if (s.includes("mysql")) return <SiMysql className="text-blue-700" />;
+  if (s.includes("rabbitmq")) return <SiRabbitmq className="text-orange-500" />;
+  if (s.includes("iam") || s.includes("security")) return <MdSecurity className="text-red-500" />;
+  return <span>💡</span>;
+}
+
+// Variants for staggered reveal
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: "easeOut", delay: i * 0.08 }
+  })
+};
+
+const listVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.05 }
   }
-];
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } }
+};
 
 export default function Skills() {
+  const groups = (profile.skills && typeof profile.skills === "object") ? profile.skills : {};
+
   return (
-    <section id="skills" className="py-20 bg-gray-50">
+    <section id="skills" className="py-16 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12">Skills</h2>
-        <div className="grid md:grid-cols-2 gap-10">
-          {skillCategories.map((category, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-lg shadow-lg p-6 transition duration-300 hover:shadow-xl"
+        <div className="mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800">Skills</h2>
+          <p className="text-slate-600 mt-2 max-w-3xl">
+            Tools and technologies I use to build reliable, secure, and efficient platforms.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {Object.entries(groups).map(([category, skills], idx) => (
+            <motion.div
+              key={category}
+              className="bg-white shadow rounded-xl p-6 border border-slate-200"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.25 }}
+              custom={idx}
             >
-              <h3 className="text-xl font-semibold mb-4 text-indigo-600">{category.category}</h3>
-              <ul className="space-y-3">
-                {category.skills.map((skill, i) => (
-                  <li key={i} className="flex items-center space-x-3">
-                    <span className="text-2xl">{skill.icon}</span>
-                    <span className="text-gray-700">{skill.name}</span>
-                  </li>
+              <h3 className="text-lg font-semibold text-slate-800 mb-4">{category}</h3>
+
+              <motion.ul
+                variants={listVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                className="space-y-3"
+              >
+                {(skills || []).map((skill) => (
+                  <motion.li
+                    key={skill}
+                    variants={itemVariants}
+                    className="flex items-center gap-3 text-slate-700"
+                  >
+                    <span className="text-xl shrink-0">{iconFor(skill)}</span>
+                    <span>{skill}</span>
+                  </motion.li>
                 ))}
-              </ul>
-            </div>
+              </motion.ul>
+            </motion.div>
           ))}
         </div>
       </div>
