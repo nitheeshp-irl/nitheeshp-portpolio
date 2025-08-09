@@ -4,13 +4,15 @@ import { profile } from "../data/profile";
 import {
   SiTerraform, SiHelm, SiArgo, SiGithubactions, SiGitlab,
   SiKubernetes, SiDocker, SiPython, SiPrometheus, SiGrafana,
-  SiPostgresql, SiMysql, SiRabbitmq
+  SiPostgresql, SiMysql, SiRabbitmq, SiGnubash   // <-- add SiGnubash here
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
 import { MdSecurity } from "react-icons/md";
-import { TbBrandBash } from "react-icons/tb";
 
-// Icon resolver (keeps your light theme colors)
+// REMOVE this line (it caused the build error):
+// import { TbBrandBash } from "react-icons/tb";
+
+// Icon resolver
 function iconFor(skill) {
   const s = skill.toLowerCase();
   if (s.includes("aws")) return <FaAws className="text-orange-500" />;
@@ -22,7 +24,7 @@ function iconFor(skill) {
   if (s.includes("kubernetes") || s.includes("eks")) return <SiKubernetes className="text-blue-600" />;
   if (s.includes("docker")) return <SiDocker className="text-sky-500" />;
   if (s.includes("python")) return <SiPython className="text-yellow-500" />;
-  if (s.includes("bash")) return <TbBrandBash className="text-green-700" />;
+  if (s.includes("bash")) return <SiGnubash className="text-green-700" />;   // <-- use SiGnubash
   if (s.includes("prometheus")) return <SiPrometheus className="text-orange-600" />;
   if (s.includes("grafana")) return <SiGrafana className="text-orange-500" />;
   if (s.includes("postgres")) return <SiPostgresql className="text-sky-700" />;
@@ -32,7 +34,6 @@ function iconFor(skill) {
   return <span>💡</span>;
 }
 
-// Variants for staggered reveal
 const cardVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: (i = 0) => ({
@@ -42,17 +43,8 @@ const cardVariants = {
   })
 };
 
-const listVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.05 }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } }
-};
+const listVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.05 } } };
+const itemVariants = { hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } } };
 
 export default function Skills() {
   const groups = (profile.skills && typeof profile.skills === "object") ? profile.skills : {};
@@ -79,7 +71,6 @@ export default function Skills() {
               custom={idx}
             >
               <h3 className="text-lg font-semibold text-slate-800 mb-4">{category}</h3>
-
               <motion.ul
                 variants={listVariants}
                 initial="hidden"
@@ -88,11 +79,7 @@ export default function Skills() {
                 className="space-y-3"
               >
                 {(skills || []).map((skill) => (
-                  <motion.li
-                    key={skill}
-                    variants={itemVariants}
-                    className="flex items-center gap-3 text-slate-700"
-                  >
+                  <motion.li key={skill} variants={itemVariants} className="flex items-center gap-3 text-slate-700">
                     <span className="text-xl shrink-0">{iconFor(skill)}</span>
                     <span>{skill}</span>
                   </motion.li>
