@@ -1,29 +1,39 @@
 import React from "react";
+import SectionWrapper from "./SectionWrapper";
 import { profile } from "../data/profile";
+import { MdWork } from "react-icons/md";
 
 export default function Experience() {
-  if (!profile.experience?.length) return null;
   return (
-    <section id="experience" className="max-w-6xl mx-auto px-4 py-12">
-      <h2 className="text-2xl md:text-3xl font-bold mb-6">Experience</h2>
-      <div className="grid gap-5">
-        {profile.experience.map((job) => (
-          <article key={`${job.company}-${job.period}`} className="border rounded-2xl p-6 bg-white shadow">
-            <div className="flex items-start justify-between flex-wrap gap-2">
-              <div>
-                <h3 className="text-lg font-semibold">
-                  {job.title} <span className="text-slate-600">· {job.company}</span>
-                </h3>
-                <p className="text-sm text-slate-500">{job.period} • {job.location}</p>
-              </div>
-            </div>
-            {job.bullets?.length ? (
-              <ul className="mt-4 grid gap-2 text-sm text-slate-700 list-disc pl-5">
-                {job.bullets.map((b) => <li key={b}>{b}</li>)}
-              </ul>
-            ) : null}
-          </article>
-        ))}
+    <section id="experience" className="py-16 bg-white">
+      <div className="max-w-6xl mx-auto px-6">
+        <SectionWrapper>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-10">Experience</h2>
+        </SectionWrapper>
+
+        <div className="grid gap-6">
+          {profile.experience.map((job, i) => (
+            <SectionWrapper key={job.company + i} delay={i * 0.08}>
+              <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow transition">
+                <header className="flex items-start justify-between gap-4 flex-wrap">
+                  <div className="flex items-center gap-3">
+                    <span className="text-sky-600"><MdWork /></span>
+                    <div>
+                      <h3 className="text-lg font-semibold text-slate-800">{job.role}</h3>
+                      <p className="text-slate-600">{job.company}</p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-slate-500">{job.period}</p>
+                </header>
+                <ul className="mt-4 list-disc list-inside text-slate-700">
+                  {job.bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              </article>
+            </SectionWrapper>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -5,11 +5,14 @@ applications:
       phases:
         preBuild:
           commands:
-            - npm ci
+            # Use lockfile when present; fall back to install if needed
+            - npm ci || npm install
         build:
           commands:
+            # Build the Vite app
             - npm run build
       artifacts:
+        # Vite outputs to dist/
         baseDirectory: dist
         files:
           - '**/*'
