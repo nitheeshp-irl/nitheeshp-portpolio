@@ -1,12 +1,14 @@
 // src/components/Skills.jsx
 import React from "react";
-import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import {
   SiTerraform,
   SiAmazoncloudwatch,
-  SiAmazonaws,
+  SiAws,
   SiAwsamplify,
   SiHelm,
+  SiKubernetes,
+  SiDocker,
   SiGithubactions,
   SiGitlab,
   SiOctopusdeploy,
@@ -14,112 +16,110 @@ import {
   SiWindows,
   SiGrafana,
   SiPrometheus,
-  SiKubernetes,
+  SiApplemusic, // Placeholder for AppDynamics (no official icon)
+  SiVuedotjs,
+  SiAmazonroute53,
+  SiAmazonec2,
+  SiAmazons3,
+  SiAmazondynamodb,
+  SiAmazonsqs,
+  SiAmazoncloudformation,
+  SiAmazoncdk,
+  SiSplunk
 } from "react-icons/si";
-import { FaCloud, FaNetworkWired } from "react-icons/fa";
-import { MdOutlineSecurity } from "react-icons/md";
-import { DiAws } from "react-icons/di";
-import { AiOutlineCode } from "react-icons/ai";
+import { MdSecurity } from "react-icons/md";
 
-const skillCategories = [
-  {
-    title: "Infrastructure as Code (IaC)",
-    skills: [
-      { name: "Terraform", icon: <SiTerraform /> },
-      { name: "AWS CloudFormation", icon: <SiAmazonaws /> },
-      { name: "AWS CDK", icon: <SiAwsamplify /> },
-    ],
-  },
-  {
-    title: "CI/CD",
-    skills: [
-      { name: "GitHub Actions", icon: <SiGithubactions /> },
-      { name: "Helm", icon: <SiHelm /> },
-      { name: "Kargo", icon: <AiOutlineCode /> },
-      { name: "GitLab CI", icon: <SiGitlab /> },
-      { name: "Octopus Deploy", icon: <SiOctopusdeploy /> },
-      { name: "AWS CodePipeline", icon: <DiAws /> },
-    ],
-  },
-  {
-    title: "Operating Systems",
-    skills: [
-      { name: "Linux", icon: <SiLinux /> },
-      { name: "Windows Server", icon: <SiWindows /> },
-    ],
-  },
-  {
-    title: "Observability",
-    skills: [
-      { name: "CloudWatch", icon: <SiAmazoncloudwatch /> },
-      { name: "AppDynamics", icon: <FaCloud /> },
-      { name: "Prometheus", icon: <SiPrometheus /> },
-      { name: "Grafana", icon: <SiGrafana /> },
-    ],
-  },
-  {
-    title: "Cloud Networking",
-    skills: [
-      { name: "AWS VPC", icon: <FaNetworkWired /> },
-      { name: "AWS Transit Gateway", icon: <FaNetworkWired /> },
-    ],
-  },
-  {
-    title: "Security",
-    skills: [
-      { name: "AWS Security Hub", icon: <MdOutlineSecurity /> },
-      { name: "AWS CloudTrail", icon: <SiAmazonaws /> },
-      { name: "AWS Inspector", icon: <MdOutlineSecurity /> },
-      { name: "Splunk", icon: <FaCloud /> },
-    ],
-  },
-];
+const Skills = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  });
 
-export default function Skills() {
+  const skillCategories = [
+    {
+      title: "Infrastructure as Code (IaC)",
+      skills: [
+        { name: "Terraform", icon: <SiTerraform /> },
+        { name: "AWS CloudFormation", icon: <SiAmazoncloudformation /> },
+        { name: "AWS CDK", icon: <SiAmazoncdk /> }
+      ]
+    },
+    {
+      title: "CI/CD",
+      skills: [
+        { name: "GitHub Actions", icon: <SiGithubactions /> },
+        { name: "Helm", icon: <SiHelm /> },
+        { name: "Kargo", icon: "🚀" },
+        { name: "GitLab CI", icon: <SiGitlab /> },
+        { name: "Octopus Deploy", icon: <SiOctopusdeploy /> },
+        { name: "AWS CodePipeline", icon: <SiAws /> }
+      ]
+    },
+    {
+      title: "Operating Systems",
+      skills: [
+        { name: "Linux", icon: <SiLinux /> },
+        { name: "Windows Server", icon: <SiWindows /> }
+      ]
+    },
+    {
+      title: "Observability",
+      skills: [
+        { name: "CloudWatch", icon: <SiAmazoncloudwatch /> },
+        { name: "AppDynamics", icon: <SiApplemusic /> }, // placeholder
+        { name: "Prometheus", icon: <SiPrometheus /> },
+        { name: "Grafana", icon: <SiGrafana /> }
+      ]
+    },
+    {
+      title: "Cloud Networking",
+      skills: [
+        { name: "AWS", icon: <SiAws /> },
+        { name: "VPC", icon: <SiAmazonroute53 /> },
+        { name: "Transit Gateway", icon: <SiAmazonec2 /> }
+      ]
+    },
+    {
+      title: "Security",
+      skills: [
+        { name: "AWS Security Hub", icon: <MdSecurity /> },
+        { name: "AWS CloudTrail", icon: <SiAws /> },
+        { name: "AWS Inspector", icon: <SiAws /> },
+        { name: "Splunk", icon: <SiSplunk /> }
+      ]
+    }
+  ];
+
   return (
-    <section id="skills" className="py-20 bg-white text-slate-900">
-      <div className="max-w-6xl mx-auto px-4">
-        <motion.h2
-          className="text-4xl font-bold mb-12 text-center"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Skills
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {skillCategories.map((category, idx) => (
-            <motion.div
-              key={idx}
-              className="p-6 rounded-xl shadow-lg bg-gray-50 hover:shadow-xl transition"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.15, duration: 0.6 }}
-            >
-              <h3 className="text-2xl font-semibold mb-4 border-b pb-2 border-gray-200">
-                {category.title}
-              </h3>
-              <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                {category.skills.map((skill, i) => (
-                  <motion.li
-                    key={i}
-                    className="flex flex-col items-center text-center text-sm font-medium text-slate-700"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05, duration: 0.4 }}
-                  >
-                    <span className="text-3xl mb-2 text-blue-600">{skill.icon}</span>
-                    {skill.name}
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
+    <section
+      ref={ref}
+      className={`transition-opacity duration-1000 ease-out ${
+        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      }`}
+    >
+      <h2 className="text-3xl font-bold mb-6 text-gray-800">Skills</h2>
+      <div className="grid gap-6 md:grid-cols-2">
+        {skillCategories.map((category, idx) => (
+          <div
+            key={idx}
+            className="bg-white shadow-md rounded-lg p-6 border border-gray-100"
+          >
+            <h3 className="text-xl font-semibold mb-4 text-indigo-600">
+              {category.title}
+            </h3>
+            <ul className="grid grid-cols-2 gap-4">
+              {category.skills.map((skill, i) => (
+                <li key={i} className="flex items-center space-x-3">
+                  <span className="text-indigo-500 text-lg">{skill.icon}</span>
+                  <span className="text-gray-700">{skill.name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </section>
   );
-}
+};
+
+export default Skills;
