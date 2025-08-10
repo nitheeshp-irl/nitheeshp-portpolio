@@ -1,39 +1,29 @@
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Experience from "./components/Experience";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Articles from "./components/Articles";
-import Footer from "./components/Footer";
+import Portfolio from "./components/Portfolio";
 
 export default function App() {
-  React.useEffect(() => {
-    const prev = document.documentElement.style.scrollBehavior;
-    document.documentElement.style.scrollBehavior = "smooth";
-    return () => (document.documentElement.style.scrollBehavior = prev || "");
-  }, []);
-
   return (
-    <div className="bg-white text-slate-800">
-      <Navbar />
-      <AnimatePresence mode="wait">
-        <motion.main
-          key="page"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
-        >
-          <Hero />
-          <Experience />
-          <Skills />
-          <Projects />
-          <Articles />
-          <Footer />
-        </motion.main>
-      </AnimatePresence>
+    <div className="min-h-screen bg-hero-gradient text-slate-800">
+      {/* top bar */}
+      <header className="sticky top-0 z-30 bg-white/70 backdrop-blur border-b border-surface-ring">
+        <div className="mx-auto max-w-6xl px-4 py-4">
+          <h1 className="text-2xl md:text-3xl font-bold text-center">
+            <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
+              Nitheesh • DevOps
+            </span>
+          </h1>
+        </div>
+      </header>
+
+      {/* content */}
+      <main className="mx-auto max-w-6xl px-4 py-8 md:py-12 space-y-10 md:space-y-16">
+        <Portfolio />
+      </main>
+
+      {/* footer */}
+      <footer className="py-12 text-center text-slate-600">
+        © {new Date().getFullYear()} Nitheesh
+      </footer>
     </div>
   );
 }

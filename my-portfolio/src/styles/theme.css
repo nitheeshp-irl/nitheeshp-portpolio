@@ -1,0 +1,14 @@
+:root{
+  --bg: #ffffff;
+  --bg-soft: #f8fafc;
+  --text: #0f172a;
+  --muted: #475569;
+
+  --brand: #2563EB;
+  --brand-2: #7C3AED;
+  --brand-3: #06B6D4;
+  --brand-4: #10B981;
+  --brand-5: #F59E0B;
+}
+
+html, body { background: var(--bg); }

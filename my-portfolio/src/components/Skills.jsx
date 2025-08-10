@@ -1,190 +1,134 @@
-// src/components/Skills.jsx
 import React from "react";
-import { motion } from "framer-motion";
-
-// Simple Icons (available in react-icons/si)
 import {
+  // IaC
   SiTerraform,
+  // CI/CD
   SiGithubactions,
   SiHelm,
   SiGitlab,
   SiOctopusdeploy,
+  // OS
   SiLinux,
+  // Observability
   SiAmazoncloudwatch,
   SiPrometheus,
   SiGrafana,
+  // AWS brand (generic AWS mark)
+  SiAmazonwebservices,
+  // Security / Tools
   SiSplunk,
 } from "react-icons/si";
+import { MdInsights } from "react-icons/md"; // Fallback for AppDynamics
+import { FaWindows } from "react-icons/fa"; // ✅ replace SiWindows
 
-// Other packs
-import { FaAws, FaWindows, FaCodeBranch } from "react-icons/fa";
-import { BsDiagram3, BsArrowLeftRight, BsShieldCheck } from "react-icons/bs";
-import { MdSecurity, MdTimeline, MdConstruction, MdInsights } from "react-icons/md";
-
-// --- Custom CloudFormation icon (react-icons doesn't include one) ---
-const CfIcon = ({ size = 18, color = "#2E7D32" }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <rect x="3" y="7" width="18" height="10" rx="2" stroke={color} strokeWidth="2" />
-    <rect x="7" y="5" width="10" height="4" rx="1" stroke={color} strokeWidth="2" />
-    <rect x="7" y="15" width="10" height="4" rx="1" stroke={color} strokeWidth="2" />
-  </svg>
-);
-
+// Brand colors
 const COLORS = {
-  aws: "#FF9900",
-  terraform: "#623CE4",
-  helm: "#2774CA",
-  gha: "#2088FF",
+  terraform: "#844FBA",
+  githubActions: "#2088FF",
+  helm: "#277A9F",
   gitlab: "#FC6D26",
   octopus: "#2F93E0",
-  codepipeline: "#1D8102",
   linux: "#000000",
   windows: "#0078D6",
-  cloudwatch: "#6B46C1",
-  appd: "#0B5CAB",
+  cloudwatch: "#FF4F8B",
   prometheus: "#E6522C",
   grafana: "#F46800",
+  aws: "#FF9900",
+  awsSecondary: "#3B5AA3",
+  appdynamics: "#0076D6",
   splunk: "#000000",
-  vpc: "#FF9900",
-  tgw: "#6B7280",
-  security: "#1D8102",
-  cloudtrail: "#4B5563",
-  inspector: "#1D8102",
-  cfn: "#2E7D32",
+  securityGreen: "#25A162",
+  securityOrange: "#F58536",
 };
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
-};
-
-const outerCard =
-  "bg-white/90 border border-slate-200 shadow-sm rounded-xl flex flex-col p-5 hover:shadow-md transition-shadow h-full overflow-hidden";
-
-const innerGrid =
-  "mt-4 grid gap-3 w-full [grid-template-columns:repeat(1,minmax(0,1fr))] sm:[grid-template-columns:repeat(auto-fit,minmax(220px,1fr))]";
-
-function SkillChip({ Icon, label, color }) {
-  return (
-    <div
-      className="group flex items-center gap-3 px-3 py-2.5 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors h-12 w-full overflow-hidden"
-      role="listitem"
-      title={label}
-    >
-      <span className="flex-none inline-flex items-center justify-center w-9 h-9 rounded-md bg-slate-50 border border-slate-200">
-        {Icon === CfIcon ? (
-          <CfIcon size={18} color={color} />
-        ) : (
-          <Icon size={18} style={{ color }} aria-hidden="true" />
-        )}
-      </span>
-      <span className="min-w-0 text-sm font-medium text-slate-800 truncate leading-tight">
-        {label}
-      </span>
-    </div>
-  );
-}
-
-const SKILL_BUCKETS = [
+const skillsData = [
   {
-    title: "IaC",
+    category: "IaC",
     items: [
-      { label: "Terraform", Icon: SiTerraform, color: COLORS.terraform },
-      { label: "CloudFormation", Icon: CfIcon, color: COLORS.cfn },
-      { label: "AWS CDK", Icon: MdConstruction, color: COLORS.aws },
+      { name: "Terraform", icon: <SiTerraform style={{ color: COLORS.terraform }} /> },
+      { name: "CloudFormation", icon: <SiAmazonwebservices style={{ color: COLORS.awsSecondary }} /> },
+      { name: "AWS CDK", icon: <SiAmazonwebservices style={{ color: COLORS.aws }} /> },
     ],
   },
   {
-    title: "CI / CD",
+    category: "CI / CD",
     items: [
-      { label: "GitHub Actions", Icon: SiGithubactions, color: COLORS.gha },
-      { label: "Helm", Icon: SiHelm, color: COLORS.helm },
-      { label: "Kargo (Argo style)", Icon: FaCodeBranch, color: COLORS.codepipeline },
-      { label: "GitLab CI", Icon: SiGitlab, color: COLORS.gitlab },
-      { label: "Octopus Deploy", Icon: SiOctopusdeploy, color: COLORS.octopus },
-      { label: "AWS CodePipeline", Icon: FaCodeBranch, color: COLORS.codepipeline },
+      { name: "GitHub Actions", icon: <SiGithubactions style={{ color: COLORS.githubActions }} /> },
+      { name: "Helm", icon: <SiHelm style={{ color: COLORS.helm }} /> },
+      { name: "Kargo", icon: <SiHelm style={{ color: "#EF7B4D" }} /> },
+      { name: "GitLab CI", icon: <SiGitlab style={{ color: COLORS.gitlab }} /> },
+      { name: "Octopus Deploy", icon: <SiOctopusdeploy style={{ color: COLORS.octopus }} /> },
+      { name: "AWS CodePipeline", icon: <SiAmazonwebservices style={{ color: COLORS.awsSecondary }} /> },
     ],
   },
   {
-    title: "Operating Systems",
+    category: "Operating Systems",
     items: [
-      { label: "Linux", Icon: SiLinux, color: COLORS.linux },
-      { label: "Windows Server", Icon: FaWindows, color: COLORS.windows },
+      { name: "Linux", icon: <SiLinux style={{ color: COLORS.linux }} /> },
+      { name: "Windows Server", icon: <FaWindows style={{ color: COLORS.windows }} /> }, // ✅ FA icon
     ],
   },
   {
-    title: "Observability",
+    category: "Observability",
     items: [
-      { label: "CloudWatch", Icon: SiAmazoncloudwatch, color: COLORS.cloudwatch },
-      { label: "AppDynamics", Icon: MdInsights, color: COLORS.appd },
-      { label: "Prometheus", Icon: SiPrometheus, color: COLORS.prometheus },
-      { label: "Grafana", Icon: SiGrafana, color: COLORS.grafana },
+      { name: "CloudWatch", icon: <SiAmazoncloudwatch style={{ color: COLORS.cloudwatch }} /> },
+      { name: "AppDynamics", icon: <MdInsights style={{ color: COLORS.appdynamics }} /> },
+      { name: "Prometheus", icon: <SiPrometheus style={{ color: COLORS.prometheus }} /> },
+      { name: "Grafana", icon: <SiGrafana style={{ color: COLORS.grafana }} /> },
     ],
   },
   {
-    title: "Cloud (AWS)",
+    category: "Cloud (AWS)",
     items: [
-      { label: "AWS (Core)", Icon: FaAws, color: COLORS.aws },
-      { label: "VPC", Icon: BsDiagram3, color: COLORS.vpc },
-      { label: "Transit Gateway", Icon: BsArrowLeftRight, color: COLORS.tgw },
+      { name: "AWS (Core)", icon: <SiAmazonwebservices style={{ color: COLORS.aws }} /> },
+      { name: "VPC", icon: <SiAmazonwebservices style={{ color: COLORS.aws }} /> },
+      { name: "Transit Gateway", icon: <SiAmazonwebservices style={{ color: COLORS.aws }} /> },
     ],
   },
   {
-    title: "Security",
+    category: "Security",
     items: [
-      { label: "Security Hub", Icon: MdSecurity, color: COLORS.security },
-      { label: "CloudTrail", Icon: MdTimeline, color: COLORS.cloudtrail },
-      { label: "Inspector", Icon: BsShieldCheck, color: COLORS.inspector },
-      { label: "Splunk", Icon: SiSplunk, color: COLORS.splunk },
+      { name: "Security Hub", icon: <SiAmazonwebservices style={{ color: COLORS.securityGreen }} /> },
+      { name: "CloudTrail", icon: <SiAmazonwebservices style={{ color: COLORS.securityOrange }} /> },
+      { name: "Inspector", icon: <SiAmazonwebservices style={{ color: COLORS.securityGreen }} /> },
+      { name: "Splunk", icon: <SiSplunk style={{ color: COLORS.splunk }} /> },
     ],
   },
 ];
 
-export default function Skills() {
+const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-gradient-to-b from-white to-slate-50">
-      <div className="max-w-6xl mx-auto px-6">
-        <motion.header
-          variants={fadeIn}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.35 }}
-          className="mb-10"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            Skills
-          </h2>
-          <p className="mt-3 text-slate-600">
-            Tooling I use to design reliable, observable, and secure delivery on AWS.
-          </p>
-        </motion.header>
+    <section id="skills" className="py-12">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold mb-8 text-center">Skills</h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-          {SKILL_BUCKETS.map((bucket, i) => (
-            <motion.div
-              key={bucket.title}
-              variants={fadeIn}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ delay: 0.05 * i }}
-              className={outerCard}
+        {/* Outer grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skillsData.map((group) => (
+            <div
+              key={group.category}
+              className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col"
             >
-              <h3 className="text-lg font-semibold text-slate-900">{bucket.title}</h3>
-              <div className={innerGrid} role="list">
-                {bucket.items.map(({ label, Icon, color }) => (
-                  <SkillChip
-                    key={`${bucket.title}-${label}`}
-                    Icon={Icon}
-                    label={label}
-                    color={color}
-                  />
+              <h3 className="text-xl font-semibold mb-4">{group.category}</h3>
+
+              {/* Inner grid */}
+              <div className="grid grid-cols-2 gap-4">
+                {group.items.map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="flex items-center gap-3 bg-gray-50 p-2.5 rounded-lg border border-gray-100"
+                  >
+                    <span className="text-2xl shrink-0">{skill.icon}</span>
+                    <span className="text-sm font-medium leading-tight">{skill.name}</span>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default Skills;
