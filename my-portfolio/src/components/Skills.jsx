@@ -1,140 +1,102 @@
 import React from "react";
-import { motion } from "framer-motion";
-
-// Safe, widely available icons
+import { useInView } from "react-intersection-observer";
 import {
+  // IaC
   SiTerraform,
   SiHelm,
+  // CI/CD
   SiGithubactions,
   SiGitlab,
   SiOctopusdeploy,
+  // OS
   SiLinux,
-  SiWindows,
+  // Observability
   SiGrafana,
   SiPrometheus,
+  SiAmazoncloudwatch,
+  // Security
   SiSplunk
 } from "react-icons/si";
-import {
-  FaAws,
-  FaSitemap,       // CloudFormation
-  FaCubes,         // AWS CDK
-  FaCodeBranch,    // CodePipeline (generic)
-  FaNetworkWired,  // VPC
-  FaExchangeAlt,   // Transit Gateway / promotions
-  FaEye,           // CloudWatch (generic eye)
-  FaChartLine      // AppDynamics (placeholder)
-} from "react-icons/fa";
-import { MdSecurity } from "react-icons/md";
+import { FaAws, FaWindows, FaNetworkWired, FaLock } from "react-icons/fa";
 
-// ---------- Animation variants ----------
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i = 0) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.45, ease: "easeOut", delay: i * 0.08 }
-  })
-};
-const listVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.05 } } };
-const itemVariants = { hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } } };
+// Skill card component
+const SkillCard = ({ icon: Icon, label }) => (
+  <div className="flex flex-col items-center text-center p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300">
+    <Icon size={40} className="text-blue-600 mb-2" />
+    <span className="text-gray-700 font-medium">{label}</span>
+  </div>
+);
 
-// ---------- Your exact categories ----------
-const skillGroups = [
-  {
-    category: "IaC",
-    items: [
-      { name: "Terraform",        icon: <SiTerraform className="text-purple-600" /> },
-      { name: "CloudFormation",   icon: <FaSitemap className="text-slate-700" /> },
-      { name: "AWS CDK",          icon: <FaCubes className="text-amber-600" /> }
-    ]
-  },
-  {
-    category: "CI/CD",
-    items: [
-      { name: "GitHub Actions",   icon: <SiGithubactions className="text-slate-700" /> },
-      { name: "Helm",             icon: <SiHelm className="text-blue-600" /> },
-      { name: "Kargo",            icon: <FaExchangeAlt className="text-emerald-600" /> }, // promotion flow icon
-      { name: "GitLab CI",        icon: <SiGitlab className="text-orange-600" /> },
-      { name: "Octopus Deploy",   icon: <SiOctopusdeploy className="text-fuchsia-600" /> },
-      { name: "AWS CodePipeline", icon: <FaCodeBranch className="text-sky-700" /> }
-    ]
-  },
-  {
-    category: "Operating Systems",
-    items: [
-      { name: "Linux",            icon: <SiLinux className="text-amber-600" /> },
-      { name: "Windows Server",   icon: <SiWindows className="text-blue-700" /> }
-    ]
-  },
-  {
-    category: "Observability",
-    items: [
-      { name: "AWS CloudWatch",   icon: <FaEye className="text-rose-600" /> },  // generic, stable
-      { name: "AppDynamics",      icon: <FaChartLine className="text-green-600" /> }, // placeholder
-      { name: "Prometheus",       icon: <SiPrometheus className="text-orange-600" /> },
-      { name: "Grafana",          icon: <SiGrafana className="text-orange-500" /> }
-    ]
-  },
-  {
-    category: "Cloud",
-    items: [
-      { name: "AWS",              icon: <FaAws className="text-orange-500" /> },
-      { name: "VPC",              icon: <FaNetworkWired className="text-slate-700" /> },
-      { name: "Transit Gateway",  icon: <FaExchangeAlt className="text-indigo-600" /> }
-    ]
-  },
-  {
-    category: "Security",
-    items: [
-      { name: "AWS Security Hub", icon: <MdSecurity className="text-red-500" /> },
-      { name: "AWS CloudTrail",   icon: <MdSecurity className="text-red-500" /> },
-      { name: "AWS Inspector",    icon: <MdSecurity className="text-red-500" /> },
-      { name: "Splunk",           icon: <SiSplunk className="text-black" /> }
-    ]
-  }
-];
+// Skill group section
+const Group = ({ title, children }) => (
+  <div className="mb-8">
+    <h3 className="text-xl font-bold text-gray-900 mb-4">{title}</h3>
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      {children}
+    </div>
+  </div>
+);
 
 export default function Skills() {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
   return (
-    <section id="skills" className="py-16 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800">Skills</h2>
-          <p className="text-slate-600 mt-2 max-w-3xl">
-            Tools and technologies I use to build reliable, secure, and efficient platforms.
-          </p>
-        </div>
+    <section
+      id="skills"
+      ref={ref}
+      className={`max-w-6xl mx-auto px-6 py-12 transition-all duration-1000 ease-out ${
+        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+    >
+      <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">
+        Skills
+      </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {skillGroups.map((group, idx) => (
-            <motion.div
-              key={group.category}
-              className="bg-white shadow rounded-xl p-6 border border-slate-200"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.25 }}
-              custom={idx}
-            >
-              <h3 className="text-lg font-semibold text-slate-800 mb-4">{group.category}</h3>
+      {/* IaC */}
+      <Group title="Infrastructure as Code (IaC)">
+        <SkillCard icon={SiTerraform} label="Terraform" />
+        <SkillCard icon={FaAws} label="AWS CDK" />
+        <SkillCard icon={FaAws} label="CloudFormation" />
+      </Group>
 
-              <motion.ul
-                variants={listVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                className="space-y-3"
-              >
-                {group.items.map((s) => (
-                  <motion.li key={s.name} variants={itemVariants} className="flex items-center gap-3 text-slate-700">
-                    <span className="text-xl shrink-0">{s.icon}</span>
-                    <span>{s.name}</span>
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+      {/* CI/CD */}
+      <Group title="CI/CD">
+        <SkillCard icon={SiGithubactions} label="GitHub Actions" />
+        <SkillCard icon={SiHelm} label="Helm" />
+        <SkillCard icon={FaNetworkWired} label="Kargo" />
+        <SkillCard icon={SiGitlab} label="GitLab CI" />
+        <SkillCard icon={SiOctopusdeploy} label="Octopus Deploy" />
+        <SkillCard icon={FaAws} label="AWS CodePipeline" />
+      </Group>
+
+      {/* Operating Systems */}
+      <Group title="Operating Systems">
+        <SkillCard icon={SiLinux} label="Linux" />
+        <SkillCard icon={FaWindows} label="Windows Server" />
+      </Group>
+
+      {/* Observability */}
+      <Group title="Observability">
+        <SkillCard icon={SiAmazoncloudwatch} label="CloudWatch" />
+        <SkillCard icon={SiGrafana} label="Grafana" />
+        <SkillCard icon={SiPrometheus} label="Prometheus" />
+        <SkillCard icon={FaAws} label="AppDynamics" />
+      </Group>
+
+      {/* Cloud */}
+      <Group title="Cloud">
+        <SkillCard icon={FaAws} label="AWS" />
+        <SkillCard icon={FaNetworkWired} label="VPC" />
+        <SkillCard icon={FaNetworkWired} label="Transit Gateway" />
+      </Group>
+
+      {/* Security */}
+      <Group title="Security">
+        <SkillCard icon={FaLock} label="AWS Security Hub" />
+        <SkillCard icon={FaLock} label="CloudTrail" />
+        <SkillCard icon={FaLock} label="AWS Inspector" />
+        <SkillCard icon={SiSplunk} label="Splunk" />
+      </Group>
     </section>
   );
 }
