@@ -20,7 +20,7 @@ const fadeInUp = {
 
 const SectionDivider = () => (
   <div
-    className="h-1 w-full my-16 rounded-full bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400"
+    className="h-1 w-full my-8 rounded-full bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400"
     aria-hidden="true"
   />
 );
@@ -29,7 +29,7 @@ export default function Portfolio() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-white via-slate-50 to-indigo-50 text-slate-800">
       {/* Page Header / Hero */}
-      <header className="max-w-6xl mx-auto px-6 pt-16 pb-8">
+      <header className="max-w-6xl mx-auto px-6 pt-4 pb-2">
         <motion.div
           {...fadeInUp}
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6"
@@ -55,7 +55,7 @@ export default function Portfolio() {
       </header>
 
       {/* Experience FIRST */}
-      <section id="experience" className="max-w-6xl mx-auto px-6 py-12">
+      <section id="experience" className="max-w-6xl mx-auto px-6 py-4">
         <motion.h2
           {...fadeInUp}
           className="text-3xl font-bold mb-6 text-gradient-cool"
@@ -115,14 +115,14 @@ export default function Portfolio() {
       <SectionDivider />
 
       {/* Skills SECOND (keeps your existing animated component) */}
-      <section id="skills" className="max-w-6xl mx-auto px-6 py-12">
+      <section id="skills" className="max-w-6xl mx-auto px-6 py-4">
         <Skills />
       </section>
 
       <SectionDivider />
 
       {/* Projects */}
-      <section id="projects" className="max-w-6xl mx-auto px-6 py-12">
+      <section id="projects" className="max-w-6xl mx-auto px-6 py-4">
         <motion.h2
           {...fadeInUp}
           className="text-3xl font-bold mb-6 text-gradient-cool"
@@ -166,7 +166,7 @@ export default function Portfolio() {
       <SectionDivider />
 
       {/* Articles (real link to your author page) */}
-      <section id="articles" className="max-w-6xl mx-auto px-6 py-12">
+      <section id="articles" className="max-w-6xl mx-auto px-6 py-4">
         <motion.h2
           {...fadeInUp}
           className="text-3xl font-bold mb-6 text-gradient-cool"
@@ -229,7 +229,7 @@ export default function Portfolio() {
       <SectionDivider />
 
       {/* Contact (BOTTOM OF PAGE) */}
-      <section id="contact" className="py-20 bg-gradient-to-br from-white via-slate-50 to-indigo-50">
+      <section id="contact" className="py-6 bg-gradient-to-br from-white via-slate-50 to-indigo-50">
         <div className="max-w-6xl mx-auto px-6">
           <motion.h2
             {...fadeInUp}
@@ -239,9 +239,9 @@ export default function Portfolio() {
           </motion.h2>
           <motion.p
             {...fadeInUp}
-            className="text-lg mb-12 text-center text-slate-600"
+            className="text-lg mb-8 text-center text-slate-600"
           >
-            Whether you have a question, want to collaborate, or just want to say hi — I’d love to hear from you.
+            Whether you have a question, want to collaborate, or just want to say hi — I'd love to hear from you.
           </motion.p>
 
           <motion.div
