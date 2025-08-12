@@ -18,13 +18,6 @@ const fadeInUp = {
   viewport: { once: true, amount: 0.2 },
 };
 
-const SectionDivider = () => (
-  <div
-    className="h-1 w-full my-8 rounded-full bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400"
-    aria-hidden="true"
-  />
-);
-
 export default function Portfolio() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-white via-slate-50 to-indigo-50 text-slate-800">
@@ -112,14 +105,10 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <SectionDivider />
-
       {/* Skills SECOND (keeps your existing animated component) */}
       <section id="skills" className="max-w-6xl mx-auto px-6 py-4">
         <Skills />
       </section>
-
-      <SectionDivider />
 
       {/* Projects */}
       <section id="projects" className="max-w-6xl mx-auto px-6 py-4">
@@ -162,8 +151,6 @@ export default function Portfolio() {
           </motion.article>
         </div>
       </section>
-
-      <SectionDivider />
 
       {/* Articles (real link to your author page) */}
       <section id="articles" className="max-w-6xl mx-auto px-6 py-4">
@@ -225,8 +212,6 @@ export default function Portfolio() {
           </ul>
         </motion.div>
       </section>
-
-      <SectionDivider />
 
       {/* Contact (BOTTOM OF PAGE) */}
       <section id="contact" className="py-6 bg-gradient-to-br from-white via-slate-50 to-indigo-50">
