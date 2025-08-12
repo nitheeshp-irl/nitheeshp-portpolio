@@ -17,7 +17,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           {/* Email */}
           <a
-            href="mailto:nitheesh@example.com"
+            href="mailto:nitheeshp@outlook.com"
             className="flex flex-col items-center p-6 bg-white shadow-md rounded-lg hover:shadow-lg transition group"
           >
             <FaEnvelope className="text-indigo-500 text-4xl mb-3 group-hover:scale-110 transition-transform" />
@@ -29,7 +29,7 @@ export default function Contact() {
 
           {/* LinkedIn */}
           <a
-            href="https://www.linkedin.com/in/nitheeshpoojary/"
+            href="https://www.linkedin.com/in/nitheeshp/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center p-6 bg-white shadow-md rounded-lg hover:shadow-lg transition group"
