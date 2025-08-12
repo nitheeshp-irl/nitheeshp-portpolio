@@ -35,21 +35,21 @@ export default function Portfolio() {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6"
         >
           <div>
-            <h1 className="text-4xl font-extrabold tracking-tight">
+            <h1 className="text-4xl font-extrabold tracking-tight text-animate-gradient">
               Nitheesh Poojary
             </h1>
-            <p className="mt-2 text-lg text-slate-600">
+            <p className="mt-2 text-lg text-gradient-cool">
               Senior DevOps & Cloud Engineer — AWS | IaC | CI/CD | Observability
             </p>
           </div>
 
           {/* Quick Links top-right (like binyam.io style) */}
           <nav className="flex items-center gap-4 text-sm">
-            <a href="#experience" className="hover:underline">Experience</a>
-            <a href="#skills" className="hover:underline">Skills</a>
-            <a href="#projects" className="hover:underline">Projects</a>
-            <a href="#articles" className="hover:underline">Articles</a>
-            <a href="#contact" className="hover:underline">Contact</a>
+            <a href="#experience" className="hover:underline text-gradient-cool">Experience</a>
+            <a href="#skills" className="hover:underline text-gradient-cool">Skills</a>
+            <a href="#projects" className="hover:underline text-gradient-cool">Projects</a>
+            <a href="#articles" className="hover:underline text-gradient-cool">Articles</a>
+            <a href="#contact" className="hover:underline text-gradient-cool">Contact</a>
           </nav>
         </motion.div>
       </header>
@@ -58,7 +58,7 @@ export default function Portfolio() {
       <section id="experience" className="max-w-6xl mx-auto px-6 py-12">
         <motion.h2
           {...fadeInUp}
-          className="text-3xl font-bold mb-6 text-slate-900"
+          className="text-3xl font-bold mb-6 text-gradient-cool"
         >
           Experience
         </motion.h2>
@@ -116,12 +116,6 @@ export default function Portfolio() {
 
       {/* Skills SECOND (keeps your existing animated component) */}
       <section id="skills" className="max-w-6xl mx-auto px-6 py-12">
-        <motion.h2
-          {...fadeInUp}
-          className="text-3xl font-bold mb-6 text-slate-900"
-        >
-          Skills
-        </motion.h2>
         <Skills />
       </section>
 
@@ -131,7 +125,7 @@ export default function Portfolio() {
       <section id="projects" className="max-w-6xl mx-auto px-6 py-12">
         <motion.h2
           {...fadeInUp}
-          className="text-3xl font-bold mb-6 text-slate-900"
+          className="text-3xl font-bold mb-6 text-gradient-cool"
         >
           Projects
         </motion.h2>
@@ -175,7 +169,7 @@ export default function Portfolio() {
       <section id="articles" className="max-w-6xl mx-auto px-6 py-12">
         <motion.h2
           {...fadeInUp}
-          className="text-3xl font-bold mb-6 text-slate-900"
+          className="text-3xl font-bold mb-6 text-gradient-cool"
         >
           Articles
         </motion.h2>
@@ -239,7 +233,7 @@ export default function Portfolio() {
         <div className="max-w-6xl mx-auto px-6">
           <motion.h2
             {...fadeInUp}
-            className="text-3xl font-bold mb-6 text-center text-slate-900"
+            className="text-3xl font-bold mb-6 text-center text-gradient-cool"
           >
             Get in Touch
           </motion.h2>
