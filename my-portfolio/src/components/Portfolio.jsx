@@ -32,7 +32,7 @@ export default function Portfolio() {
               Nitheesh Poojary
             </h1>
             <p className="mt-2 text-lg text-gradient-cool">
-              Senior DevOps & Cloud Engineer — AWS | IaC | CI/CD | Observability
+              Principal Devops Engineer — AWS | IaC | CI/CD | Observability
             </p>
           </div>
 
