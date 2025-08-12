@@ -100,7 +100,7 @@ const Skills = () => {
   return (
     <section id="skills" className="py-12">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 text-center">Skills</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center text-gradient">Skills</h2>
 
         {/* Outer grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -109,7 +109,7 @@ const Skills = () => {
               key={group.category}
               className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col"
             >
-              <h3 className="text-xl font-semibold mb-4">{group.category}</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gradient-warm">{group.category}</h3>
 
               {/* Inner grid */}
               <div className="grid grid-cols-2 gap-4">

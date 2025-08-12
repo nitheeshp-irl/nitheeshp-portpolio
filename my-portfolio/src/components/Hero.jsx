@@ -9,10 +9,10 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-10 items-center">
         <div className="md:col-span-2">
           <SectionWrapper>
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-animate-gradient">
               {profile.name}
             </h1>
-            <p className="mt-3 text-xl text-slate-600">{profile.tagline}</p>
+            <p className="mt-3 text-xl text-gradient-cool font-semibold">{profile.tagline}</p>
             <p className="mt-5 text-slate-600 max-w-3xl">{profile.about}</p>
             <div className="mt-7 flex gap-3">
               <a href="#projects" className="px-4 py-2 rounded-md text-white bg-gradient-to-r from-[#FF9900] to-[#0ea5e9] hover:opacity-90 shadow">

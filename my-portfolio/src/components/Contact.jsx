@@ -8,8 +8,8 @@ export default function Contact() {
       <HeaderNav />
 
       <div className="max-w-3xl mx-auto px-6 py-20 text-center">
-        <h1 className="text-4xl font-bold mb-6">Get in Touch</h1>
-        <p className="text-lg mb-12 text-slate-600">
+        <h1 className="text-4xl font-bold mb-6 text-animate-gradient">Get in Touch</h1>
+        <p className="text-lg mb-12 text-gradient-warm">
           Whether you have a question, want to collaborate, or just want to say
           hi — I’d love to hear from you.
         </p>
@@ -21,7 +21,7 @@ export default function Contact() {
             className="flex flex-col items-center p-6 bg-white shadow-md rounded-lg hover:shadow-lg transition group"
           >
             <FaEnvelope className="text-indigo-500 text-4xl mb-3 group-hover:scale-110 transition-transform" />
-            <span className="font-medium">Email</span>
+            <span className="font-medium text-gradient">Email</span>
             <span className="text-sm text-slate-500 break-all">
               nitheesh@example.com
             </span>
@@ -35,7 +35,7 @@ export default function Contact() {
             className="flex flex-col items-center p-6 bg-white shadow-md rounded-lg hover:shadow-lg transition group"
           >
             <FaLinkedin className="text-blue-600 text-4xl mb-3 group-hover:scale-110 transition-transform" />
-            <span className="font-medium">LinkedIn</span>
+            <span className="font-medium text-gradient">LinkedIn</span>
             <span className="text-sm text-slate-500">View Profile</span>
           </a>
 
@@ -47,7 +47,7 @@ export default function Contact() {
             className="flex flex-col items-center p-6 bg-white shadow-md rounded-lg hover:shadow-lg transition group"
           >
             <FaGithub className="text-gray-800 text-4xl mb-3 group-hover:scale-110 transition-transform" />
-            <span className="font-medium">GitHub</span>
+            <span className="font-medium text-gradient">GitHub</span>
             <span className="text-sm text-slate-500">View Projects</span>
           </a>
         </div>

@@ -19,8 +19,8 @@ export default function Experience() {
     <section className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800">Experience</h2>
-          <p className="text-slate-600 mt-2">
+          <h2 className="text-3xl md:text-4xl font-bold text-gradient">Experience</h2>
+          <p className="text-slate-600 mt-2 text-gradient-rainbow">
             Selected roles focused on AWS platforms, DevOps automation, and reliability.
           </p>
         </div>
@@ -40,7 +40,7 @@ export default function Experience() {
                 <div className="flex items-center gap-3">
                   <span className="text-sky-600 text-xl"><MdWork /></span>
                   <div>
-                    <h3 className="text-lg font-semibold text-slate-800">
+                    <h3 className="text-lg font-semibold text-animate-gradient">
                       {job.role}
                     </h3>
                     <p className="text-slate-600">{job.company}</p>

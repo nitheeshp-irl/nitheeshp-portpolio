@@ -12,3 +12,52 @@
 }
 
 html, body { background: var(--bg); }
+
+/* Colorful Text Utilities */
+.text-gradient {
+  color: #2563EB;
+  background: linear-gradient(135deg, #2563EB, #7C3AED);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-rainbow {
+  color: #ff6b6b;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-warm {
+  color: #F59E0B;
+  background: linear-gradient(135deg, #F59E0B, #ff6b6b, #7C3AED);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-cool {
+  color: #06B6D4;
+  background: linear-gradient(135deg, #06B6D4, #2563EB, #10B981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-animate-gradient {
+  color: #2563EB;
+  background: linear-gradient(270deg, #2563EB, #7C3AED, #06B6D4, #10B981);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

@@ -79,7 +79,7 @@ const Projects = () => {
   return (
     <section id="projects" className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-10">Projects</h2>
+        <h2 className="text-3xl font-bold text-center mb-10 text-gradient-rainbow">Projects</h2>
 
         <div
           ref={ref}
@@ -95,7 +95,7 @@ const Projects = () => {
               <div className="p-4">{p.visual}</div>
 
               <div className="px-5 py-4 flex-1 flex flex-col">
-                <h3 className="text-lg font-semibold mb-2">{p.title}</h3>
+                <h3 className="text-lg font-semibold mb-2 text-gradient-cool">{p.title}</h3>
 
                 <ul className="space-y-2 text-sm text-slate-700 mb-4">
                   {p.impact.map((i, idx) => (
