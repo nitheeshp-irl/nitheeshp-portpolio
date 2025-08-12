@@ -235,17 +235,17 @@ export default function Portfolio() {
           >
             {/* Email */}
             <a
-              href="mailto:nitheesh@example.com"
+              href="mailto:nitheeshp@outlook.com"
               className="flex flex-col items-center p-6 bg-white shadow-sm rounded-lg hover:shadow-md transition group border border-slate-200"
             >
               <FaEnvelope className="text-indigo-500 text-4xl mb-3 group-hover:scale-110 transition-transform" />
               <span className="font-medium">Email</span>
-              <span className="text-sm text-slate-500 break-all">nitheesh@example.com</span>
+              <span className="text-sm text-slate-500 break-all">nitheeshp@outlook.com</span>
             </a>
 
             {/* LinkedIn */}
             <a
-              href="https://www.linkedin.com/in/nitheeshpoojary/"
+              href="https://www.linkedin.com/in/nitheeshp/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center p-6 bg-white shadow-sm rounded-lg hover:shadow-md transition group border border-slate-200"

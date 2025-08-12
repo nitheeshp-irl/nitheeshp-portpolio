@@ -23,7 +23,7 @@ export default function Contact() {
             <FaEnvelope className="text-indigo-500 text-4xl mb-3 group-hover:scale-110 transition-transform" />
             <span className="font-medium text-gradient">Email</span>
             <span className="text-sm text-slate-500 break-all">
-              nitheesh@example.com
+              nitheeshp@outlook.com
             </span>
           </a>
 
