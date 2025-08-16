@@ -7,8 +7,8 @@ import Skills from "./Skills";              // your updated Skills.jsx
 // If you already have Experience and Projects components, import them here.
 // Otherwise the simple inline sections below will render fine.
 
-// Icons for Contact
-import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
+// Icons for Contact and Experience
+import { FaEnvelope, FaLinkedin, FaGithub, FaCogs, FaRocket, FaNetworkWired, FaKey, FaChartBar, FaCloud, FaImage, FaShieldAlt, FaServer, FaUsers, FaGlobe, FaLock } from "react-icons/fa";
 
 // Simple animation helpers
 const fadeInUp = {
@@ -34,10 +34,14 @@ export default function Portfolio() {
             <p className="mt-2 text-lg text-gradient-cool">
               Principal Devops Engineer — AWS | IaC | CI/CD | Observability
             </p>
+            <p className="mt-3 text-base text-slate-600">
+              Building secure, scalable AWS cloud solutions with DevOps and AI innovation
+            </p>
           </div>
 
           {/* Quick Links top-right (like binyam.io style) */}
           <nav className="flex items-center gap-4 text-sm">
+            <a href="#about" className="hover:underline text-gradient-cool">About</a>
             <a href="#experience" className="hover:underline text-gradient-cool">Experience</a>
             <a href="#skills" className="hover:underline text-gradient-cool">Skills</a>
             <a href="#projects" className="hover:underline text-gradient-cool">Projects</a>
@@ -47,7 +51,34 @@ export default function Portfolio() {
         </motion.div>
       </header>
 
-      {/* Experience FIRST */}
+      {/* About Me */}
+      <section id="about" className="max-w-6xl mx-auto px-6 py-4">
+        <motion.h2
+          {...fadeInUp}
+          className="text-3xl font-bold mb-6 text-gradient-cool"
+        >
+          About Me
+        </motion.h2>
+        
+        <motion.div
+          {...fadeInUp}
+          className="rounded-xl bg-white/70 backdrop-blur shadow-sm p-6 border border-slate-200"
+        >
+          <div className="space-y-4 text-slate-700 leading-relaxed">
+            <p>
+              I'm a Principal DevOps Engineer specializing in AWS, Infrastructure as Code, CI/CD, and observability. I design secure, scalable, and automated cloud solutions while ensuring efficiency and compliance.
+            </p>
+            <p>
+              I'm also interested in and building AI-driven solutions, exploring how intelligent automation can transform DevOps and cloud operations.
+            </p>
+            <p>
+              I share my work and insights through technical articles on freeCodeCamp.
+            </p>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Experience */}
       <section id="experience" className="max-w-6xl mx-auto px-6 py-4">
         <motion.h2
           {...fadeInUp}
@@ -64,13 +95,29 @@ export default function Portfolio() {
           >
             <header className="flex items-center justify-between flex-wrap gap-2">
               <h3 className="text-xl font-semibold">Senior DevOps Engineer — Verizon Connect</h3>
-              <span className="text-sm text-slate-500">2021 — Present</span>
+              <span className="text-sm text-slate-500">2019 — Present</span>
             </header>
-            <ul className="mt-3 list-disc pl-5 text-slate-700 leading-relaxed">
-              <li>Built and maintained CI/CD with GitHub Actions/Kargo/Helm, reducing deploy time by ~40%.</li>
-              <li>Automated infra with Terraform & CloudFormation; introduced CDK for reusable stacks.</li>
-              <li>Set up CloudWatch + Prometheus + Grafana dashboards; integrated AppDynamics for APM.</li>
-              <li>Hardened security using AWS Security Hub, CloudTrail, Inspector; integrated Splunk.</li>
+            <ul className="mt-3 space-y-2 text-slate-700 leading-relaxed">
+              <li className="flex items-start gap-3">
+                <FaCogs className="text-indigo-500 mt-1 flex-shrink-0" />
+                <span>CI/CD Optimization – Built and maintained pipelines with GitHub Actions, Kargo, and Helm, reducing deployment times by ~40%.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FaRocket className="text-green-500 mt-1 flex-shrink-0" />
+                <span>Automation at Scale – Automated RabbitMQ and Redis deployments using Ansible, Jenkins, and Octopus, minimizing errors and speeding up releases.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FaNetworkWired className="text-blue-500 mt-1 flex-shrink-0" />
+                <span>Cloud Networking – Led migration from Transit VPC to Transit Gateway, centralizing network control and optimizing costs.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FaKey className="text-orange-500 mt-1 flex-shrink-0" />
+                <span>Access Management – Implemented Redis RBAC automation with AWS CDK, significantly reducing access management effort.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FaChartBar className="text-purple-500 mt-1 flex-shrink-0" />
+                <span>Cloud Visibility – Developed a multi-account AWS inventory and patch compliance dashboard using Quicksight, Glue, and Athena.</span>
+              </li>
             </ul>
           </motion.article>
 
@@ -79,13 +126,44 @@ export default function Portfolio() {
             className="rounded-xl bg-white/70 backdrop-blur shadow-sm p-6 border border-slate-200"
           >
             <header className="flex items-center justify-between flex-wrap gap-2">
-              <h3 className="text-xl font-semibold">DevOps Engineer — Ascendum / IGATE</h3>
-              <span className="text-sm text-slate-500">2017 — 2021</span>
+              <h3 className="text-xl font-semibold">Solution Architect — SixNines IT (acquired, now Accenture)</h3>
+              <span className="text-sm text-slate-500">2016 — 2019</span>
             </header>
-            <ul className="mt-3 list-disc pl-5 text-slate-700 leading-relaxed">
-              <li>Migrated on-prem workloads to AWS VPC with Transit Gateway; standardized pipelines in GitLab CI.</li>
-              <li>Containerized workloads; Helm releases with environment-specific values and automated rollbacks.</li>
-              <li>Introduced IaC guardrails and cost tagging policies.</li>
+            <ul className="mt-3 space-y-2 text-slate-700 leading-relaxed">
+              <li className="flex items-start gap-3">
+                <FaCloud className="text-blue-500 mt-1 flex-shrink-0" />
+                <span>Cloud Migration & Compliance – Migrated a legacy PCI compliance application to Oracle Cloud, achieving cost reductions, enhancing scalability, optimizing operations, and ensuring continuous regulatory compliance through Oracle's secure infrastructure.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FaImage className="text-green-500 mt-1 flex-shrink-0" />
+                <span>Automated Image Pipelines – Designed and implemented image pipelines using Packer and Jenkins, reducing deployment time from hours to minutes and significantly increasing deployment frequency.</span>
+              </li>
+            </ul>
+          </motion.article>
+
+
+
+          <motion.article
+            {...fadeInUp}
+            className="rounded-xl bg-white/70 backdrop-blur shadow-sm p-6 border border-slate-200"
+          >
+            <header className="flex items-center justify-between flex-wrap gap-2">
+              <h3 className="text-xl font-semibold">Technical Specialist — IGATE Cloud Solutions Ltd</h3>
+              <span className="text-sm text-slate-500">2014 — 2016</span>
+            </header>
+            <ul className="mt-3 space-y-2 text-slate-700 leading-relaxed">
+              <li className="flex items-start gap-3">
+                <FaShieldAlt className="text-red-500 mt-1 flex-shrink-0" />
+                <span>Implemented comprehensive user management best practices on Linux Servers, reducing security incidents through strategic access control.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FaServer className="text-blue-500 mt-1 flex-shrink-0" />
+                <span>Configured High Availability NAT on AWS VPC, improving network reliability.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FaUsers className="text-green-500 mt-1 flex-shrink-0" />
+                <span>Part of team that modernized Bose audio company DevOps journey, using Chef, Bamboo and AEM.</span>
+              </li>
             </ul>
           </motion.article>
 
@@ -94,12 +172,18 @@ export default function Portfolio() {
             className="rounded-xl bg-white/70 backdrop-blur shadow-sm p-6 border border-slate-200"
           >
             <header className="flex items-center justify-between flex-wrap gap-2">
-              <h3 className="text-xl font-semibold">Cloud/DevOps Engineer — Six Nines IT</h3>
-              <span className="text-sm text-slate-500">2015 — 2017</span>
+              <h3 className="text-xl font-semibold">Cloud Engineer — 8KMiles</h3>
+              <span className="text-sm text-slate-500">2013 — 2014</span>
             </header>
-            <ul className="mt-3 list-disc pl-5 text-slate-700 leading-relaxed">
-              <li>Provisioned multi-account AWS landing zones; automated AMI baking and golden images.</li>
-              <li>Hooked CloudTrail + Splunk for centralized audit trails and alerting.</li>
+            <ul className="mt-3 space-y-2 text-slate-700 leading-relaxed">
+              <li className="flex items-start gap-3">
+                <FaGlobe className="text-blue-500 mt-1 flex-shrink-0" />
+                <span>AWS Web Solutions – Designed and implemented public-facing websites on AWS for major clients, improving online presence and streamlining user management.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FaLock className="text-red-500 mt-1 flex-shrink-0" />
+                <span>Cloud Migration & Security – Migrated customer workloads to AWS and delivered a HIPAA-compliant website using Sophos Firewall and Trend Micro for disk encryption.</span>
+              </li>
             </ul>
           </motion.article>
         </div>
@@ -124,30 +208,58 @@ export default function Portfolio() {
             {...fadeInUp}
             className="rounded-xl bg-white/70 backdrop-blur shadow-sm p-6 border border-slate-200"
           >
-            <h3 className="text-xl font-semibold">Multi-Account AWS Platform (IaC-First)</h3>
+            <h3 className="text-xl font-semibold">From Commit to Production: Hands-On GitOps Promotion</h3>
             <p className="mt-2 text-slate-700">
-              Terraform modules for VPC, TGW, EKS node groups, and standardized observability. GitHub Actions + CodePipeline for infra and app deploys.
+              Complete GitOps workflow implementation with GitHub Actions, Argo CD, Helm, and Kargo for automated promotion pipelines.
             </p>
-            <ul className="mt-3 list-disc pl-5 text-slate-700">
-              <li>Blue/Green with Helm + Kargo</li>
-              <li>Guardrails via Security Hub + Inspector</li>
-              <li>Dashboards in CloudWatch/Grafana</li>
-            </ul>
+            <div className="mt-4">
+              <h4 className="font-semibold text-slate-800 mb-2">Tech Stack:</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-600">
+                <div><strong>CI/Build:</strong> GitHub Actions</div>
+                <div><strong>Container:</strong> Docker, Docker Compose</div>
+                <div><strong>K8s Runtime:</strong> Minikube</div>
+                <div><strong>GitOps:</strong> Argo CD</div>
+                <div><strong>Promotion:</strong> Kargo</div>
+                <div><strong>Package Mgmt:</strong> Helm</div>
+              </div>
+            </div>
+            <a
+              href="https://www.freecodecamp.org/news/from-commit-to-production-hands-on-gitops-promotion-with-github-actions-argo-cd-helm-and-kargo/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center mt-3 text-indigo-600 hover:text-indigo-800 font-medium"
+            >
+              Read the full article →
+            </a>
           </motion.article>
 
           <motion.article
             {...fadeInUp}
             className="rounded-xl bg-white/70 backdrop-blur shadow-sm p-6 border border-slate-200"
           >
-            <h3 className="text-xl font-semibold">Cost-Aware Observability Pack</h3>
+            <h3 className="text-xl font-semibold">AWS Multi-Account Management with Terraform and GitOps</h3>
             <p className="mt-2 text-slate-700">
-              Thin layer of Prometheus/Grafana + CloudWatch metrics and APM (AppDynamics) for per-service SLOs and cost signals.
+              Comprehensive guide on simplifying AWS multi-account management using Terraform and GitOps practices for scalable cloud infrastructure.
             </p>
-            <ul className="mt-3 list-disc pl-5 text-slate-700">
-              <li>Golden signals for APIs and queues</li>
-              <li>Usage → spend correlation panels</li>
-              <li>Splunk alerts wired to on-call</li>
-            </ul>
+            <div className="mt-4">
+              <h4 className="font-semibold text-slate-800 mb-2">Tech Stack:</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-600">
+                <div><strong>IaC:</strong> Terraform, Terraform Cloud</div>
+                <div><strong>CI/CD:</strong> GitHub Actions</div>
+                <div><strong>Multi-Account:</strong> AWS Organizations, Control Tower, OUs, SSO, SCPs</div>
+                <div><strong>Landing Zone:</strong> AWS Control Tower, Custom Landing Zone</div>
+                <div><strong>Governance:</strong> Control Tower Guardrails</div>
+                <div><strong>Permissions:</strong> AWS SSO, Service Control Policies</div>
+              </div>
+            </div>
+            <a
+              href="https://www.freecodecamp.org/news/simplify-aws-multi-account-management-with-terraform-and-gitops/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center mt-3 text-indigo-600 hover:text-indigo-800 font-medium"
+            >
+              Read the full article →
+            </a>
           </motion.article>
         </div>
       </section>
@@ -166,7 +278,7 @@ export default function Portfolio() {
           className="rounded-xl bg-white/70 backdrop-blur shadow-sm p-6 border border-slate-200"
         >
           <p className="text-slate-700">
-            I write about DevOps, AWS, IaC, CI/CD, and production operations. Read my latest posts on freeCodeCamp:
+            I publish articles on DevOps, AWS, Infrastructure as Code, CI/CD, and production operations.
           </p>
           <a
             href="https://www.freecodecamp.org/news/author/nitheeshp/"
@@ -182,11 +294,21 @@ export default function Portfolio() {
             <li>
               <a
                 className="hover:underline"
-                href="https://www.freecodecamp.org/news/author/nitheeshp/"
+                href="https://www.freecodecamp.org/news/simplify-aws-multi-account-management-with-terraform-and-gitops/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Building secure AWS CI/CD pipelines with Terraform & GitHub Actions
+                Simplify AWS Multi-Account Management with Terraform and GitOps
+              </a>
+            </li>
+            <li>
+              <a
+                className="hover:underline"
+                href="https://www.freecodecamp.org/news/from-commit-to-production-hands-on-gitops-promotion-with-github-actions-argo-cd-helm-and-kargo/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                From Commit to Production: Hands-On GitOps Promotion with GitHub Actions, Argo CD, Helm, and Kargo
               </a>
             </li>
             <li>

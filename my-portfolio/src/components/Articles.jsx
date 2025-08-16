@@ -1,6 +1,6 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";s
 
 // Replace with your real article list
 const articles = [
