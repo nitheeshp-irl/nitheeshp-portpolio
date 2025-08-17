@@ -8,7 +8,8 @@ import Skills from "./Skills";              // your updated Skills.jsx
 // Otherwise the simple inline sections below will render fine.
 
 // Icons for Contact and Experience
-import { FaEnvelope, FaLinkedin, FaGithub, FaCogs, FaRocket, FaNetworkWired, FaKey, FaChartBar, FaCloud, FaImage, FaShieldAlt, FaServer, FaUsers, FaGlobe, FaLock } from "react-icons/fa";
+import { FaEnvelope, FaLinkedin, FaGithub, FaCogs, FaRocket, FaNetworkWired, FaKey, FaChartBar, FaCloud, FaImage, FaShieldAlt, FaServer, FaUsers, FaGlobe, FaLock, FaCertificate, FaAws } from "react-icons/fa";
+import { SiKubernetes, SiDocker, SiTerraform, SiHashicorp } from "react-icons/si";
 
 // Simple animation helpers
 const fadeInUp = {
@@ -44,6 +45,7 @@ export default function Portfolio() {
             <a href="#about" className="hover:underline text-gradient-cool transition-colors">About</a>
             <a href="#experience" className="hover:underline text-gradient-cool transition-colors">Experience</a>
             <a href="#skills" className="hover:underline text-gradient-cool transition-colors">Skills</a>
+            <a href="#certifications" className="hover:underline text-gradient-cool transition-colors">Certifications</a>
             <a href="#projects" className="hover:underline text-gradient-cool transition-colors">Projects</a>
             <a href="#articles" className="hover:underline text-gradient-cool transition-colors">Articles</a>
             <a href="#contact" className="hover:underline text-gradient-cool transition-colors">Contact</a>
@@ -172,6 +174,71 @@ export default function Portfolio() {
       {/* Skills SECOND (keeps your existing animated component) */}
       <section id="skills" className="max-w-6xl mx-auto px-6 py-4">
         <Skills />
+      </section>
+
+      {/* Certifications */}
+      <section id="certifications" className="max-w-6xl mx-auto px-6 py-4">
+        <motion.h2
+          {...fadeInUp}
+          className="text-3xl font-bold mb-6 text-gradient-cool"
+        >
+          Certifications
+        </motion.h2>
+
+        <motion.div
+          {...fadeInUp}
+          className="rounded-xl bg-white/70 backdrop-blur shadow-sm p-6 border border-slate-200"
+        >
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="flex items-center gap-3 p-3 rounded-lg bg-orange-50 border border-orange-200">
+              <FaAws className="text-orange-500 text-2xl flex-shrink-0" />
+              <div>
+                <div className="font-semibold text-slate-800">AWS Certified Security – Specialty</div>
+                <div className="text-sm text-slate-600">Advanced security expertise</div>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-3 p-3 rounded-lg bg-orange-50 border border-orange-200">
+              <FaAws className="text-orange-500 text-2xl flex-shrink-0" />
+              <div>
+                <div className="font-semibold text-slate-800">AWS Solutions Architect - Professional</div>
+                <div className="text-sm text-slate-600">Advanced architecture design</div>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-3 p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <SiKubernetes className="text-blue-500 text-2xl flex-shrink-0" />
+              <div>
+                <div className="font-semibold text-slate-800">Certified Kubernetes Administrator</div>
+                <div className="text-sm text-slate-600">Container orchestration</div>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-3 p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <SiDocker className="text-blue-500 text-2xl flex-shrink-0" />
+              <div>
+                <div className="font-semibold text-slate-800">Docker Certified Associate</div>
+                <div className="text-sm text-slate-600">Containerization platform</div>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-3 p-3 rounded-lg bg-orange-50 border border-orange-200">
+              <FaAws className="text-orange-500 text-2xl flex-shrink-0" />
+              <div>
+                <div className="font-semibold text-slate-800">AWS DevOps Engineer - Professional</div>
+                <div className="text-sm text-slate-600">Advanced DevOps practices</div>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-3 p-3 rounded-lg bg-purple-50 border border-purple-200">
+              <SiTerraform className="text-purple-500 text-2xl flex-shrink-0" />
+              <div>
+                <div className="font-semibold text-slate-800">HashiCorp Terraform Associate</div>
+                <div className="text-sm text-slate-600">Infrastructure as Code</div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* Projects */}
