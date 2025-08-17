@@ -84,7 +84,7 @@ export default function Portfolio() {
           {...fadeInUp}
           className="text-3xl font-bold mb-6 text-gradient-cool"
         >
-          Experience
+          Experience Highlights
         </motion.h2>
 
         <motion.article
@@ -92,51 +92,80 @@ export default function Portfolio() {
           className="rounded-xl bg-white/70 backdrop-blur shadow-sm p-6 border border-slate-200"
         >
           <header className="mb-4">
-            <h3 className="text-xl font-semibold">DevOps & Cloud Engineering Experience</h3>
             <span className="text-sm text-slate-500">2013 — Present</span>
           </header>
-          <ul className="space-y-2 text-slate-700 leading-relaxed">
-            <li className="flex items-start gap-3">
+          <div className="space-y-4 text-slate-700 leading-relaxed">
+            <div className="flex items-start gap-3">
               <FaCogs className="text-indigo-500 mt-1 flex-shrink-0" />
-              <span>CI/CD Optimization – Built and maintained pipelines with GitHub Actions, Kargo, and Helm, reducing deployment times by ~40%.</span>
-            </li>
-            <li className="flex items-start gap-3">
+              <div>
+                <span className="font-medium">CI/CD Optimization</span> — Built and maintained pipelines with GitHub Actions, Kargo, and Helm, cutting deployment time by ~40%.
+                <div className="mt-1 text-xs text-slate-500">Tech: GitHub Actions • Kargo • Helm</div>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
               <FaRocket className="text-green-500 mt-1 flex-shrink-0" />
-              <span>Automation at Scale – Automated RabbitMQ and Redis deployments using Ansible, Jenkins, and Octopus, minimizing errors and speeding up releases.</span>
-            </li>
-            <li className="flex items-start gap-3">
+              <div>
+                <span className="font-medium">Messaging & Cache Automation</span> — Automated RabbitMQ and Redis deployments with Ansible, Jenkins, and Octopus Deploy, reducing errors and speeding releases.
+                <div className="mt-1 text-xs text-slate-500">Tech: RabbitMQ • Redis • Ansible • Jenkins • Octopus Deploy</div>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
               <FaNetworkWired className="text-blue-500 mt-1 flex-shrink-0" />
-              <span>Cloud Networking – Led migration from Transit VPC to Transit Gateway, centralizing network control and optimizing costs.</span>
-            </li>
-            <li className="flex items-start gap-3">
+              <div>
+                <span className="font-medium">Network Modernization</span> — Led migration from transit VPC to AWS Transit Gateway, centralizing control and lowering costs.
+                <div className="mt-1 text-xs text-slate-500">Tech: AWS Transit Gateway • VPC • Routing</div>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
               <FaKey className="text-orange-500 mt-1 flex-shrink-0" />
-              <span>Access Management – Implemented Redis RBAC automation with AWS CDK, significantly reducing access management effort.</span>
-            </li>
-            <li className="flex items-start gap-3">
+              <div>
+                <span className="font-medium">Access Management</span> — Implemented Redis RBAC automation using AWS CDK, significantly reducing access-management effort.
+                <div className="mt-1 text-xs text-slate-500">Tech: Redis RBAC • AWS CDK</div>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
               <FaChartBar className="text-purple-500 mt-1 flex-shrink-0" />
-              <span>Cloud Visibility – Developed a multi-account AWS inventory and patch compliance dashboard using Quicksight, Glue, and Athena.</span>
-            </li>
-            <li className="flex items-start gap-3">
+              <div>
+                <span className="font-medium">Cloud Visibility</span> — Built multi-account AWS inventory & patch-compliance dashboards with QuickSight, Glue, and Athena.
+                <div className="mt-1 text-xs text-slate-500">Tech: Amazon QuickSight • AWS Glue • Amazon Athena • Multi-Account</div>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
               <FaCloud className="text-blue-500 mt-1 flex-shrink-0" />
-              <span>Cloud Migration & Compliance – Migrated legacy PCI compliance applications to cloud platforms, achieving cost reductions and enhanced scalability.</span>
-            </li>
-            <li className="flex items-start gap-3">
+              <div>
+                <span className="font-medium">Regulated App Migration</span> — Migrated legacy PCI-compliant applications to cloud platforms, achieving cost reductions and improved scalability.
+                <div className="mt-1 text-xs text-slate-500">Tech: PCI DSS • AWS • Oracle Cloud</div>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
               <FaImage className="text-green-500 mt-1 flex-shrink-0" />
-              <span>Automated Image Pipelines – Designed and implemented image pipelines using Packer and Jenkins, reducing deployment time from hours to minutes.</span>
-            </li>
-            <li className="flex items-start gap-3">
+              <div>
+                <span className="font-medium">Golden Image Pipelines</span> — Designed Packer + Jenkins image pipelines, shrinking build/deploy time from hours to minutes.
+                <div className="mt-1 text-xs text-slate-500">Tech: Packer • Jenkins • AMI • Pipelines</div>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
               <FaShieldAlt className="text-red-500 mt-1 flex-shrink-0" />
-              <span>Security Management – Implemented comprehensive user management best practices on Linux servers, reducing security incidents through strategic access control.</span>
-            </li>
-            <li className="flex items-start gap-3">
+              <div>
+                <span className="font-medium">Security Management</span> — Enforced Linux user & access best practices, reducing security incidents via structured role hygiene and auditing.
+                <div className="mt-1 text-xs text-slate-500">Tech: Linux • User Management • SSHD • Sudo</div>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
               <FaServer className="text-blue-500 mt-1 flex-shrink-0" />
-              <span>High Availability Infrastructure – Configured High Availability NAT on AWS VPC and provisioned multi-account AWS landing zones.</span>
-            </li>
-            <li className="flex items-start gap-3">
+              <div>
+                <span className="font-medium">High-Availability Foundations</span> — Deployed HA NAT Gateways and provisioned multi-account landing zones.
+                <div className="mt-1 text-xs text-slate-500">Tech: NAT Gateway (HA) • VPC • AWS Organizations • Control Tower • SCPs</div>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
               <FaGlobe className="text-purple-500 mt-1 flex-shrink-0" />
-              <span>Web Solutions & HIPAA Compliance – Designed public-facing websites on AWS and delivered HIPAA-compliant solutions using enterprise security tools.</span>
-            </li>
-          </ul>
+              <div>
+                <span className="font-medium">Web Solutions & HIPAA</span> — Delivered public-facing sites on AWS and HIPAA-compliant environments using enterprise security tools.
+                <div className="mt-1 text-xs text-slate-500">Tech: AWS • HIPAA • Sophos Firewall • Trend Micro</div>
+              </div>
+            </div>
+          </div>
         </motion.article>
       </section>
 
