@@ -40,13 +40,13 @@ export default function Portfolio() {
           </div>
 
           {/* Quick Links top-right (like binyam.io style) */}
-          <nav className="flex items-center gap-4 text-sm">
-            <a href="#about" className="hover:underline text-gradient-cool">About</a>
-            <a href="#experience" className="hover:underline text-gradient-cool">Experience</a>
-            <a href="#skills" className="hover:underline text-gradient-cool">Skills</a>
-            <a href="#projects" className="hover:underline text-gradient-cool">Projects</a>
-            <a href="#articles" className="hover:underline text-gradient-cool">Articles</a>
-            <a href="#contact" className="hover:underline text-gradient-cool">Contact</a>
+          <nav className="flex items-center gap-3 md:gap-4 text-sm flex-wrap">
+            <a href="#about" className="hover:underline text-gradient-cool transition-colors">About</a>
+            <a href="#experience" className="hover:underline text-gradient-cool transition-colors">Experience</a>
+            <a href="#skills" className="hover:underline text-gradient-cool transition-colors">Skills</a>
+            <a href="#projects" className="hover:underline text-gradient-cool transition-colors">Projects</a>
+            <a href="#articles" className="hover:underline text-gradient-cool transition-colors">Articles</a>
+            <a href="#contact" className="hover:underline text-gradient-cool transition-colors">Contact</a>
           </nav>
         </motion.div>
       </header>
