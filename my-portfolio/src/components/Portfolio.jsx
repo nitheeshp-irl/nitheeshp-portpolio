@@ -94,7 +94,7 @@ export default function Portfolio() {
           className="rounded-xl bg-white/70 backdrop-blur shadow-sm p-6 border border-slate-200"
         >
           <header className="mb-4">
-            <span className="text-sm text-slate-500">2013 — Present</span>
+            <span className="text-sm text-slate-500">2016 — Present</span>
           </header>
           <div className="space-y-4 text-slate-700 leading-relaxed">
             <div className="flex items-start gap-3">
