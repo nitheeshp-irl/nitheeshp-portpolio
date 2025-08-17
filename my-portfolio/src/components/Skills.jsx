@@ -15,11 +15,13 @@ import {
   SiGrafana,
   // AWS brand (generic AWS mark)
   SiAmazonwebservices,
+  // AWS Services
+  SiAmazonec2,
   // Security / Tools
   SiSplunk,
 } from "react-icons/si";
-import { MdInsights } from "react-icons/md"; // Fallback for AppDynamics
-import { FaWindows } from "react-icons/fa"; // ✅ replace SiWindows
+import { MdInsights, MdCloud, MdNetworkWifi, MdSecurity, MdVisibility } from "react-icons/md"; // Fallback for AppDynamics
+import { FaWindows, FaNetworkWired, FaAws, FaShieldAlt, FaSearch } from "react-icons/fa"; // ✅ replace SiWindows
 
 // Brand colors
 const COLORS = {
@@ -80,17 +82,17 @@ const skillsData = [
   {
     category: "Cloud (AWS)",
     items: [
-      { name: "AWS (Core)", icon: <SiAmazonwebservices style={{ color: COLORS.aws }} /> },
-      { name: "VPC", icon: <SiAmazonwebservices style={{ color: COLORS.aws }} /> },
-      { name: "Transit Gateway", icon: <SiAmazonwebservices style={{ color: COLORS.aws }} /> },
+      { name: "AWS (Core)", icon: <SiAmazonec2 style={{ color: COLORS.aws }} /> },
+      { name: "VPC", icon: <MdNetworkWifi style={{ color: COLORS.awsSecondary }} /> },
+      { name: "Transit Gateway", icon: <FaNetworkWired style={{ color: "#FF6B35" }} /> },
     ],
   },
   {
     category: "Security",
     items: [
-      { name: "Security Hub", icon: <SiAmazonwebservices style={{ color: COLORS.securityGreen }} /> },
-      { name: "CloudTrail", icon: <SiAmazonwebservices style={{ color: COLORS.securityOrange }} /> },
-      { name: "Inspector", icon: <SiAmazonwebservices style={{ color: COLORS.securityGreen }} /> },
+      { name: "Security Hub", icon: <MdSecurity style={{ color: COLORS.securityGreen }} /> },
+      { name: "CloudTrail", icon: <MdVisibility style={{ color: COLORS.securityOrange }} /> },
+      { name: "Inspector", icon: <FaSearch style={{ color: COLORS.securityGreen }} /> },
       { name: "Splunk", icon: <SiSplunk style={{ color: COLORS.splunk }} /> },
     ],
   },
